@@ -33,15 +33,15 @@ dependencies = [
     "soundfile"
 ]
 
-[project.optional-dependencies]
-webui = [
-    "gradio>=5.0,<6.0"
-]
-
 urls = { "homepage" = "https://heartmula.github.io/" }
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: OS Independent"
+]
+
+[project.optional-dependencies]
+webui = [
+    "gradio>=5.0,<6.0"
 ]
 
 [tool.setuptools]

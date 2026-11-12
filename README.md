@@ -264,6 +264,8 @@ if not os.path.isdir(os.path.join(repo, ".git")):
         ["git", "clone", "https://github.com/WertypasEstudios/HeartMulaWebUI.git", repo],
         check=True,
     )
+else:
+    subprocess.run(["git", "-C", repo, "pull", "--ff-only"], check=True)
 os.chdir(repo)
 subprocess.run([sys.executable, "examples/setup_colab.py"], check=True)
 ```
