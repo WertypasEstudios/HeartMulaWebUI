@@ -32,6 +32,12 @@ dependencies = [
     "modelscope==1.33.0",
     "soundfile"
 ]
+
+[project.optional-dependencies]
+webui = [
+    "gradio>=5.0,<6.0"
+]
+
 urls = { "homepage" = "https://heartmula.github.io/" }
 classifiers = [
     "Programming Language :: Python :: 3",

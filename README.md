@@ -246,6 +246,46 @@ Our different tags are comma-separated without spaces as illustrated below:
 piano,happy,wedding,synthesizer,romantic
 ```
 
+### 🎨 Interfaz web con Gradio (incluye Google Colab)
+
+La interfaz permite escribir letras, definir etiquetas musicales y generar/escuchar
+una canción desde el navegador. En Google Colab, selecciona una GPU en
+**Entorno de ejecución → Cambiar tipo de entorno de ejecución**, abre una celda
+nueva y ejecuta este único bloque:
+
+```python
+import os
+import subprocess
+import sys
+
+repo = "/content/heartlib"
+if not os.path.isdir(os.path.join(repo, ".git")):
+    subprocess.run(
+        ["git", "clone", "https://github.com/WertypasEstudios/HeartMulaWebUI.git", repo],
+        check=True,
+    )
+os.chdir(repo)
+subprocess.run([sys.executable, "examples/setup_colab.py"], check=True)
+```
+
+El setup instala las dependencias, descarga los checkpoints y arranca la interfaz.
+Cuando aparezca la URL pública de Gradio, ábrela para usar la Web UI. La primera
+ejecución puede tardar varios minutos por la instalación y la descarga de los
+modelos. Para volver a ejecutar la celda, no es necesario clonar el repositorio ni
+descargar de nuevo los archivos que ya estén en la sesión.
+
+Para una instalación local, instala el extra y lanza la interfaz desde la raíz:
+
+```bash
+pip install -e ".[webui]"
+python examples/music_webui.py --model_path ./ckpt
+```
+
+La primera generación carga los modelos y puede tardar unos minutos. Se recomienda
+usar un entorno con GPU; la interfaz carga los modelos bajo demanda para reducir
+el uso de memoria. El enlace público de Colab es accesible para cualquiera que lo
+tenga mientras la sesión siga activa, así que no introduzcas contenido privado.
+
 ---
 
 
